@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@keyframes float-balloon {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+  50% {
+    transform: translate3d(0, -20px, 0) rotate(3deg);
+  }
+}
+
+@keyframes float-balloon-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(3deg);
+  }
+  50% {
+    transform: translate3d(0, -26px, 0) rotate(-3deg);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.92;
+  }
+  88% {
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate3d(26px, 108vh, 0) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+@keyframes confetti-fall-reverse {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.92;
+  }
+  88% {
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate3d(-28px, 108vh, 0) rotate(-520deg);
+    opacity: 0;
+  }
+}
+
+@keyframes gentle-pulse-cta {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes playful-wiggle {
+  0%, 100% {
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+
+.animate-balloon {
+  animation: float-balloon 5.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-balloon-slow {
+  animation: float-balloon-slow 6.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-confetti-fall {
+  animation: confetti-fall linear infinite;
+  will-change: transform, opacity;
+}
+
+.animate-confetti-fall-reverse {
+  animation: confetti-fall-reverse linear infinite;
+  will-change: transform, opacity;
+}
+
+.animate-cta-gentle {
+  animation: gentle-pulse-cta 2.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-playful-wiggle {
+  animation: playful-wiggle 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.fiesta-dot-bg {
+  background-image:
+    radial-gradient(circle at 18px 18px, rgba(244, 123, 30, 0.08) 3px, transparent 3.5px),
+    radial-gradient(circle at 54px 48px, rgba(89, 169, 39, 0.08) 3px, transparent 3.5px),
+    radial-gradient(circle at 90px 24px, rgba(2, 136, 209, 0.08) 3px, transparent 3.5px);
+  background-size: 108px 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-balloon,
+  .animate-balloon-slow,
+  .animate-confetti-fall,
+  .animate-confetti-fall-reverse,
+  .animate-cta-gentle,
+  .animate-playful-wiggle {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
